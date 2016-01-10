@@ -4,6 +4,6 @@
 class zqtests:public zqtest{
 public:
 	zqtests();
-	int output1();
+	int output1(int num);
 };
 #endif
