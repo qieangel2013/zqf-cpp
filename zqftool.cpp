@@ -28,10 +28,6 @@ extern "C"{
 }
 #include "zq1.h"
 #include "zq2.h"
-#include <cstring>
-#include <sstream>
-#include <stdlib.h>
-using namespace std;
 /* If you declare any globals in php_zqftool.h uncomment this:
 ZEND_DECLARE_MODULE_GLOBALS(zqftool)
 */
@@ -59,8 +55,7 @@ PHP_INI_END()
 PHP_FUNCTION(getzqf)
 {
 	zqtests sd;
-	string retzqf=(char *)sd.output1(100);
-	RETURN_STRING(retzqf.c_str());
+	RETURN_STRING(sd.output1(100));
 }
 /* }}} */
 /* The previous line is meant for vim and emacs, so it can correctly fold and
