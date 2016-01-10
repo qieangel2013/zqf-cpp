@@ -55,7 +55,24 @@ PHP_INI_END()
 PHP_FUNCTION(getzqf)
 {
 	zqtests sd;
-	RETURN_STRING(sd.output1(100));
+	zval *zqnumber;
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "z", &zqnumber) == FAILURE) {
+      php_error_docref(NULL TSRMLS_CC, E_WARNING, "参数不正确!!!");
+        RETURN_FALSE;
+    }
+    switch(Z_TYPE_P(zqnumber)){
+      case IS_LONG:
+      	RETURN_STRING(sd.output1(Z_LVAL_P(zqnumber)));
+        break;
+      case IS_DOUBLE:
+      	RETURN_STRING(sd.output1((int)Z_DVAL_P(zqnumber)));
+       break;
+      default:
+        php_error_docref(NULL TSRMLS_CC, E_WARNING, "参数不正确!!!");
+        RETURN_FALSE;
+        break;
+    }
+	
 }
 /* }}} */
 /* The previous line is meant for vim and emacs, so it can correctly fold and
