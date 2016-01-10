@@ -55,7 +55,7 @@ PHP_INI_END()
 PHP_FUNCTION(getzqf)
 {
 	zqtests sd;
-	RETURN_LONG(sd.output1());
+	RETURN_LONG(sd.output1(100));
 }
 /* }}} */
 /* The previous line is meant for vim and emacs, so it can correctly fold and
